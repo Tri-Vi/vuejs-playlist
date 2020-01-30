@@ -13,17 +13,19 @@
 
 <script>
 export default {
+  props: {
+    ninjas: {
+      type: Array,
+      required: true
+    }
+  },
   data(){
     return  {
-      ninjas: [
-        {id: 1, name: 'Ryu', speciality: 'Vue Components', show: false},
-        {id: 2, name: 'Crystal', speciality: 'HTML Wizardy', show: false},
-        {id: 3, name: 'Hitoshi', speciality: 'Click Events', show: false},
-        {id: 4, name: 'Tango', speciality: 'Conditionals', show: false},
-        {id: 5, name: 'Kami', speciality: 'Webpack', show: false},
-        {id: 6, name: 'Yoshi', speciality: 'Data Design', show: false}
-      ]
+      
     }
+  },
+  methods:{
+
   }
 }
 </script>
