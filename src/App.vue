@@ -2,6 +2,7 @@
   <div>
     <app-header v-bind:title="title" v-on:changeTitle="udpateTitle($event)"></app-header>
     <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
+    <button @click="deleteNinja">Delete Ninja</button>
     <app-footer v-bind:title="title"></app-footer>
   </div>
 </template>
@@ -33,6 +34,9 @@ export default {
   methods: {
     udpateTitle(e){
       this.title = e;
+    },
+    deleteNinja(){
+      this.ninjas.pop();
     }
   }
 }
