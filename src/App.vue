@@ -1,8 +1,8 @@
 <template>
   <div>
-    <app-header></app-header>
+    <app-header v-bind:title="title" v-on:changeTitle="udpateTitle($event)"></app-header>
     <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
-    <app-footer></app-footer>
+    <app-footer v-bind:title="title"></app-footer>
   </div>
 </template>
 
@@ -26,11 +26,14 @@ export default {
         {id: 4, name: 'Tango', speciality: 'Conditionals', show: false},
         {id: 5, name: 'Kami', speciality: 'Webpack', show: false},
         {id: 6, name: 'Yoshi', speciality: 'Data Design', show: false}
-      ]
+      ],
+      title: "Vue Title"
     }
   },
   methods: {
-    
+    udpateTitle(e){
+      this.title = e;
+    }
   }
 }
 </script>
