@@ -5,6 +5,8 @@
 </template>
 
 <script>
+// Event Bus
+import {bus} from '../main.js';
 
 export default {
   props: {
@@ -18,6 +20,11 @@ export default {
     }
   },
   methods: {
+  },
+  created(){
+    bus.$on('titleChanged', (data)=>{
+      this.title = data;
+    })
   }
 }
 </script>

@@ -5,6 +5,8 @@
 </template>
 
 <script>
+// Event Bus
+import {bus} from '../main.js';
 
 export default {
   components: {
@@ -22,7 +24,9 @@ export default {
   },
   methods: {
     changeTitle(){
-      this.$emit('changeTitle', 'Vue Wizards');
+      //this.$emit('changeTitle', 'Vue Wizards');
+      this.title = 'Vue Wizards';
+      bus.$emit('titleChanged', 'Vue Wizards');
     }
   }
 }
