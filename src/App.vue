@@ -1,42 +1,31 @@
 <template>
   <div>
-    <app-header v-bind:title="title" v-on:changeTitle="udpateTitle($event)"></app-header>
-    <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
-    <button @click="deleteNinja">Delete Ninja</button>
-    <app-footer v-bind:title="title"></app-footer>
+    <keep-alive>
+      <component v-bind:is="component"></component>
+    </keep-alive>
+    <button v-on:click="component = 'form-one'">Show form one</button>
+    <button v-on:click="component = 'form-two'">Show form two</button>
+    
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
-import Ninjas from './components/Ninjas.vue'
+import formOne from './components/formOne.vue';
+import formTwo from './components/formTwo.vue';
 
 export default {
   components: {
-    'app-header': Header,
-    'app-footer': Footer,
-    'app-ninjas': Ninjas
+    'form-one': formOne,
+    'form-two': formTwo
   },
   data () {
     return {
-      ninjas: [
-        {id: 1, name: 'Ryu', speciality: 'Vue Components', show: false},
-        {id: 2, name: 'Crystal', speciality: 'HTML Wizardy', show: false},
-        {id: 3, name: 'Hitoshi', speciality: 'Click Events', show: false},
-        {id: 4, name: 'Tango', speciality: 'Conditionals', show: false},
-        {id: 5, name: 'Kami', speciality: 'Webpack', show: false},
-        {id: 6, name: 'Yoshi', speciality: 'Data Design', show: false}
-      ],
-      title: "Vue Title"
+     component: 'form-one'
     }
   },
   methods: {
-    udpateTitle(e){
-      this.title = e;
-    },
-    deleteNinja(){
-      this.ninjas.pop();
+    handleSubmit(){
+      alert('thanks for submitting');
     }
   }
 }
@@ -54,5 +43,9 @@ export default {
 
 h1, h2 {
   font-weight: normal;
+}
+body{
+    margin: 0;
+    font-family: 'Nunito SemiBold';
 }
 </style>
