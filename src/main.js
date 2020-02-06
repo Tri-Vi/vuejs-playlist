@@ -40,7 +40,8 @@ Vue.directive('theme', {
 
 //Routers
 const router = new VueRouter({
-  routes: Routes
+  routes: Routes,
+  mode: 'history'
 })
 
 new Vue({
