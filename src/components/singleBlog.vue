@@ -1,7 +1,11 @@
 <template>
   <div id="single-blog">
     <h1>{{blog.title}}</h1>
-    <article> {{blog.body}}</article>
+    <article> {{blog.content}}</article>
+    <p>Author: {{ blog.author}}</p>
+    <ul>
+      <li v-for="category in blog.categories">{{category}}</li>
+    </ul>
   </div>
 </template>
 <script>
@@ -13,9 +17,11 @@ export default {
     }
   },
   created(){
-    this.$http.get('http://jsonplaceholder.typicode.com/posts/' + this.id).then(function(data){
-      this.blog = data.body;
-      console.log(this.blog);
+    var that = this;
+    this.$http.get('https://tv-vue-playlist.firebaseio.com/posts/' + this.id + '.json').then(function(data){
+      return data.json();
+    }).then(function(data){
+      that.blog = data;
     })
   }
 }

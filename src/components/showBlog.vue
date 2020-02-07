@@ -7,7 +7,7 @@
       <h2>{{blog.title | to-uppercase}}</h2>
       </router-link>
       <article>
-        {{blog.body | snippet}}
+        {{blog.content | snippet}}
       </article>
     </div>
   </div>
@@ -29,8 +29,16 @@ export default {
 
   },
   created(){
-    this.$http.get('http://jsonplaceholder.typicode.com/posts').then(function(data){
-      this.blogs = data.body.slice(0, 10);
+    var that = this;
+    this.$http.get('https://tv-vue-playlist.firebaseio.com/posts.json').then(function(data){
+      return data.json();
+    }).then(function(data){
+      var blogsArray = [];
+      for (let key in data){
+        data[key].id = key;
+        blogsArray.push(data[key]);
+      }
+      that.blogs = blogsArray;
     })
   },
   computed: {
